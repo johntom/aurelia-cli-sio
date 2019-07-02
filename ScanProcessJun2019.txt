@@ -1,0 +1,110 @@
+
+all mySql lookups will change to mongodb after migrate
+
+
+Notes
+1) copy case and clear
+2) use F:\SCANNER_Output\WORKORDER as a test
+3) clear F:\SCANNER_Processed\WORKORDER
+4) cleanup bcs in grid, qw cn now get BIN
+5) create a post prrocess ncs fix get bin from myql and see step 12
+
+F:\SCANNER_Input\
+
+DOBBORO
+DOBRECEIPTS
+DOBRECEIPTSBORO
+DRAWINGS
+TRANSMITTAL
+WORKORDER
+
+scantopdf pushes 3 files pdf,csv,txt when it processes to
+F:\SCANNER_Output\
+DOBBORO
+
+
+DOBRECEIPTS
+InvNumber,DOBNum,CheckNum,Time,FilePath
+13530132,JOB #: 123870169 01,63903,11:36 A.M.,\\BCSSERVER\DataAccess\SCANNER_Output\DOBRECEIPTS\229.pdf
+
+
+DOBRECEIPTSBORO
+
+
+DRAWINGS
+ProfileName,fileName,OutFileNameNoExt,FilePath
+DRAWINGS,900.pdf,191998-Plumbing,F:\SCANNER_Input\DRAWINGS\191998-Plumbing.pdf
+
+
+TRANSMITTAL
+AddressTo,BCSNumber,ProfileName,FileName,FileNameNoExt,FilePath,PDFName
+600 PARTNERS CORP.,181924,TRANSMITTAL,20190510103331819.pdf,20190510103331819,F:\SCANNER_Input\TRANSMITTAL\20190510103331819.pdf,812.pdf
+
+
+
+WORKORDER
+BCSNumber,FilePath
+181810,\\BCSSERVER\DataAccess\SCANNER_Output\WORKORDER\254.pdf
+======================================================================================================
+when we process from cli move from scanner_output and place
+a row into case
+and move pdf to F:\SCANNER_Processed
+
+
+STEP 12
+Directory structure of doc storage
+C:\Docs\bin\1022706\projects\021004\ for all doc drawings
+C:\Docs\bin\1022706\QBInvoices\021004\
+C:\Docs\bin\1022706\PPTrans\021004\
+C:\Docs\bin\1022706\PPWO\021004\
+
+or better
+C:\Docs\bin\1022706\021004\projects
+C:\Docs\bin\1022706\021004\PPTrans\
+C:\Docs\bin\1022706\021004\PPWO\
+C:\Docs\bin\1022706\021004\QBInvoices
+
+CS500 Color Scanner GRAPHTEC
+Driver CS500-11EN USB
+
+DOBRECEIPTS
+mysql lookup and get bcs
+
+
+
+WORKORDER
+BCSNumber,ProfileName,fileName,OutFileNameNoExt,FilePath
+{BCSNumber},{DocumentProfileName},{GetFileName(ImportFilePath)},{GetFilenameWithoutExtension(ImportFilePath)},{ImportFilePath}
+==================
+
+DOBRECEIPTS/DOBRECEIPTSBORO 
+InvNumber,DOBNum,CheckNum,Time,ProfileName,,{GetFilenameWithoutExtension(ImportFilePath)},{ImportFilePath}
+{ZINVNUM},{ZDOBNUM},{aCheckNum},{dobTime},{DocumentProfileName},{GetFileName(OutputFilePath)},{GetFilenameWithoutExtension(ImportFilePath)},{ImportFilePath}
+mysql lookup DOBNum and get bcs
+
+=================
+DRAWINGS (get bcs filing from filename)
+ProfileName,fileName,OutFileNameNoExt,FilePath
+{DocumentProfileName},{GetFileName(OutputFilePath)},{GetFilenameWithoutExtension(ImportFilePath)},{ImportFilePath}
+manual bcs entry
+
+==============
+TRANSMITTAL
+BCSNumber,ProfileName,fileName,OutFileNameNoExt,FilePath
+{taBCSNumber},{DocumentProfileName},{GetFileName(OtputFilePath)},{GetFilenameWithoutExtension(ImportFilePath)},{ImportFilePath}
+
+
+
+
+
+
+=============================
+now we have a row with docs
+
+
+======================
+scalegrid
+April 18
+1) Cant open single page pdf to create template on large draw
+2) Variable names not visible until restart
+

@@ -1,0 +1,46 @@
+<template>
+  <require from="./app.css"></require>
+  <!--<require from="../style/styles.css"></require> -->
+  <h2>${appName}</h2>
+  <ul>
+    <li repeat.for="bake of bakeries">
+      <span> ${bake.name} - ${bake.rating}</span>
+    </li>
+  </ul>
+
+
+  <h3>Add new delicious food</h3>
+  <div class="col-sm-12">
+      <div class="col-sm-1">
+            <span>Name:</span>
+          
+        </div>
+    <div class="col-sm-2">
+       <input type="text" name="name" ref="name" />
+      
+    </div>
+    <div class="col-sm-4">
+      <label for="rating">
+        <span>Rating :</span>
+        <!-- rating of the bakery entity -->
+        <select name="rating" id="rating" ref="rating">
+          <option value="1">1 star</option>
+          <option value="2">2 stars</option>
+          <option value="3">3 stars</option>
+          <option value="4">4 stars</option>
+          <option value="5">5 stars</option>
+        </select>
+      </label>
+    </div>
+    <div class="col-sm-4">
+      <!-- <button id="add food" click.delegate="addFood()">Add</button> -->
+      <button id="add food" click.delegate="addFoodJ()">Add Food</button>
+    </div>
+
+  </div>
+</br>
+</br>
+
+
+
+</template>
