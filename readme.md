@@ -1,4 +1,7 @@
 POC using kendoui controls with systemjs and cli
+
+error in console
+
 tasks/run.js
     ghostMode:false,
 
