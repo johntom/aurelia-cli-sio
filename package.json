@@ -1,5 +1,5 @@
 {
-  "name": "au-cli-sio-sjs",
+  "name": "aurelia-cli-sio",
   "description": "An Aurelia client application.",
   "version": "0.1.0",
   "repository": {
