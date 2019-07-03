@@ -1,10 +1,9 @@
-import gulp from 'gulp';
-import changedInPlace from 'gulp-changed-in-place';
-import project from '../aurelia.json';
 import {build} from 'aurelia-cli';
+import gulp from 'gulp';
+import project from '../aurelia.json';
 
 export default function processMarkup() {
-  return gulp.src(project.markupProcessor.source)
-    .pipe(changedInPlace({firstPass: true}))
+  return gulp.src(project.markupProcessor.source, {sourcemaps: true, since: gulp.lastRun(processMarkup)})
     .pipe(build.bundle());
 }
+

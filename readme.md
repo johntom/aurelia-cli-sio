@@ -1,5 +1,6 @@
 POC using kendoui controls with systemjs and cli
-
+tasks/run.js
+    ghostMode:false,
 
 npm install  aurelia-cli --save -g
 

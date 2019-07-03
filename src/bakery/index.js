@@ -34,8 +34,8 @@ export class Bakery {
   //   });
   // }
   activate() {
-   // var socket = io("https://server.com", {path: "/chatApp/socket.io"});
-    // var socket = io("https://localhost:3000", {path: "/bakery/socket.io"});
+   //// var socket = io("https://server.com", {path: "/chatApp/socket.io"});
+   //// var socket = io("https://localhost:3000", {path: "/bakery/socket.io"});
     
     var socket = io.connect('http://localhost:3000');
     socket.on('food_ready', (eventData) => {
